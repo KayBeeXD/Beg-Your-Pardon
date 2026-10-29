@@ -27,7 +27,7 @@ The truth is, I only react this deeply because you mean so much to me and I feel
   letterSalutation: "To my Sleepy Owl,",
   letterContent: `I am deeply sorry for hurting you. Knowing that my words or actions caused a shadow over your face breaks my heart.
 
-You bring warmth, honesty, and tenderness into my days, and seeing you hurt is the last thing I ever want.
+You bring warmth and tenderness into my days, and seeing you hurt is the last thing I ever want.
 
 Every relationship has storms, but every rough patch will only make my commitment to you stronger. I promise to listen deeper, to communicate better, and to always cherish what we have.
 
