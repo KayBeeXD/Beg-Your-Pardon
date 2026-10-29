@@ -1,0 +1,313 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+  <title>A Bouquet of Promises</title>
+  
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,600;0,700;1,400&family=Nunito:wght@300;400;500;600;700&family=Caveat:wght@400;600&display=swap" rel="stylesheet">
+  
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <!-- Background Petal Canvas -->
+  <canvas id="petal-canvas"></canvas>
+
+  <!-- Ambient Audio Player & Floating Control -->
+  <audio id="bg-audio" preload="auto" loop autoplay playsinline webkit-playsinline>
+    <source src="Assets/bariye-dao-tomar-haat-lyrics-baaddiye-daao-teaamaar-haat-song-by-anupam-roy-haranath-chakraborty-128-ytshorts.savetube.me.mp3" type="audio/mpeg">
+    Your browser does not support the audio element.
+  </audio>
+
+  <!-- Floating Music Toggle Indicator -->
+  <div class="music-pill" id="music-pill" title="Toggle Music">
+    <div class="music-icon-wrapper">
+      <svg class="music-note-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+        <path d="M9 18V5l12-2v13"></path>
+        <circle cx="6" cy="18" r="3"></circle>
+        <circle cx="18" cy="16" r="3"></circle>
+      </svg>
+      <div class="sound-wave" id="sound-wave">
+        <span class="bar bar-1"></span>
+        <span class="bar bar-2"></span>
+        <span class="bar bar-3"></span>
+      </div>
+    </div>
+    <span class="music-label" id="music-status">Playing Song</span>
+  </div>
+
+  <!-- Main Container -->
+  <main class="experience-container">
+    
+    <!-- STEP 1: The Gentle Knock (Landing Screen) -->
+    <section class="card active" id="card-step-1">
+      <div class="card-glass">
+        <div class="subtle-badge">A Heartfelt Note</div>
+        <h1 class="main-title">A Bouquet of Promises</h1>
+        
+        <!-- Interactive Single Rose Bud -->
+        <div class="landing-rose-wrapper" id="landing-rose-btn" role="button" tabindex="0" aria-label="Tap the yellow rose bud">
+          <div class="rose-glow"></div>
+          <svg class="landing-rose-svg" viewBox="0 0 160 160">
+            <!-- Stem and Leaves -->
+            <path class="rose-stem" d="M80,105 Q78,135 82,155" stroke="#7A936C" stroke-width="4" stroke-linecap="round" fill="none"/>
+            <path class="rose-leaf left" d="M79,122 Q58,115 50,126 Q65,134 79,128" fill="#8FA683"/>
+            <path class="rose-leaf right" d="M81,135 Q102,128 110,139 Q95,147 81,141" fill="#8FA683"/>
+            <path class="rose-sepal sepal-left" d="M72,106 Q62,94 66,80 Q76,92 76,104 Z" fill="#7A936C"/>
+            <path class="rose-sepal sepal-right" d="M88,106 Q98,94 94,80 Q84,92 84,104 Z" fill="#7A936C"/>
+            <!-- Closed Yellow Rose Bud Petals -->
+            <path class="petal-back" d="M80,45 C65,45 60,65 65,95 C75,105 85,105 95,95 C100,65 95,45 80,45 Z" fill="#E8B923"/>
+            <path class="petal-layer-1" d="M72,50 C62,56 58,74 67,94 C76,102 85,101 92,90 C84,70 82,55 72,50 Z" fill="#F5D061"/>
+            <path class="petal-layer-2" d="M88,50 C98,56 102,74 93,94 C84,102 75,101 68,90 C76,70 78,55 88,50 Z" fill="#FCE588"/>
+            <path class="petal-core" d="M76,55 Q80,48 84,55 Q88,75 80,90 Q72,75 76,55 Z" fill="#FFED99"/>
+          </svg>
+          <div class="tap-hint">
+            <span class="pulse-ring"></span>
+            <span class="hint-text">Tap the rose</span>
+          </div>
+        </div>
+
+        <p class="tender-quote" id="landing-quote">
+          "I know I made a mistake, and I know I hurt you. If you’re open to hearing what's in my heart, tap the rose."
+        </p>
+
+        <button class="primary-btn" id="btn-start">
+          <span>Hear Me Out</span>
+          <span class="btn-heart">💛</span>
+        </button>
+      </div>
+    </section>
+
+    <!-- STEP 2: The Unfolding Blooms (3 Roses Garden) -->
+    <section class="card" id="card-step-2">
+      <div class="card-glass wide">
+        <div class="step-indicator">Step 1 of 3</div>
+        <h2 class="section-title">The Unfolding Blooms</h2>
+        <p class="section-subtitle">
+          Every thought I've been holding onto. Tap each bud to let it blossom...
+        </p>
+
+        <!-- Garden Bed -->
+        <div class="garden-container">
+          
+          <!-- Rose 1 -->
+          <div class="garden-item" id="rose-item-1" data-index="1">
+            <div class="rose-interactive" role="button" tabindex="0" aria-label="First Rose: Accountability">
+              <div class="bloom-aura"></div>
+              <svg class="blooming-rose-svg" viewBox="0 0 140 160">
+                <path class="garden-stem" d="M70,110 Q68,135 70,158" stroke="#7A936C" stroke-width="4" stroke-linecap="round" fill="none"/>
+                <path class="garden-leaf" d="M69,130 Q50,123 44,133 Q58,140 70,135" fill="#8FA683"/>
+                <g class="rose-petals-group">
+                  <!-- Outer petals unfurl on bloom -->
+                  <path class="bloom-petal outer outer-l" d="M70,105 C42,105 28,75 42,50 C58,68 66,90 70,105 Z" fill="#E8B923"/>
+                  <path class="bloom-petal outer outer-r" d="M70,105 C98,105 112,75 98,50 C82,68 74,90 70,105 Z" fill="#E8B923"/>
+                  <path class="bloom-petal mid mid-l" d="M70,102 C50,100 42,75 54,55 C65,70 70,90 70,102 Z" fill="#F5D061"/>
+                  <path class="bloom-petal mid mid-r" d="M70,102 C90,100 98,75 86,55 C75,70 70,90 70,102 Z" fill="#F8DC7B"/>
+                  <path class="bloom-petal center" d="M65,58 C68,48 72,48 75,58 C78,75 70,96 65,58 Z" fill="#FFF1A8"/>
+                </g>
+              </svg>
+              <div class="rose-status-badge">
+                <span class="unbloomed-text">Tap to Bloom</span>
+                <span class="bloomed-text">Bloomed ✨</span>
+              </div>
+            </div>
+            
+            <div class="thought-card" id="thought-1">
+              <div class="thought-tag">Accountability</div>
+              <p class="thought-text" id="quote-rose-1">
+                "I hate that I became the reason for your pain. Your smile is truly my favorite thing in the world, and hurting you was never what I wanted. I take full responsibility for my actions.<br><br>The truth is, I only react this deeply because you mean so much to me and I feel you so close to my heart. When things get heavy, my default instinct has always been to shut down and go quiet, just like I told you before. But knowing it caused you hurt makes me realize that silence isn't protecting us; it's hurting us. I don't want my walls to come between us. I am genuinely committed to working on this and communicating better, especially with you."
+              </p>
+            </div>
+          </div>
+
+          <!-- Rose 2 -->
+          <div class="garden-item" id="rose-item-2" data-index="2">
+            <div class="rose-interactive" role="button" tabindex="0" aria-label="Second Rose: What You Mean to Me">
+              <div class="bloom-aura"></div>
+              <svg class="blooming-rose-svg" viewBox="0 0 140 160">
+                <path class="garden-stem" d="M70,110 Q72,135 70,158" stroke="#7A936C" stroke-width="4" stroke-linecap="round" fill="none"/>
+                <path class="garden-leaf" d="M71,132 Q90,125 96,135 Q82,142 70,137" fill="#8FA683"/>
+                <g class="rose-petals-group">
+                  <path class="bloom-petal outer outer-l" d="M70,105 C42,105 28,75 42,50 C58,68 66,90 70,105 Z" fill="#E8B923"/>
+                  <path class="bloom-petal outer outer-r" d="M70,105 C98,105 112,75 98,50 C82,68 74,90 70,105 Z" fill="#E8B923"/>
+                  <path class="bloom-petal mid mid-l" d="M70,102 C50,100 42,75 54,55 C65,70 70,90 70,102 Z" fill="#F5D061"/>
+                  <path class="bloom-petal mid mid-r" d="M70,102 C90,100 98,75 86,55 C75,70 70,90 70,102 Z" fill="#F8DC7B"/>
+                  <path class="bloom-petal center" d="M65,58 C68,48 72,48 75,58 C78,75 70,96 65,58 Z" fill="#FFF1A8"/>
+                </g>
+              </svg>
+              <div class="rose-status-badge">
+                <span class="unbloomed-text">Tap to Bloom</span>
+                <span class="bloomed-text">Bloomed ✨</span>
+              </div>
+            </div>
+            
+            <div class="thought-card" id="thought-2">
+              <div class="thought-tag">Your Place in My Life</div>
+              <p class="thought-text" id="quote-rose-2">
+                "You are not just a part of my life; you make everything feel lighter and safer. You lie in my heart. You shall be in there forever. My greatest wish is that you are happy when you think of me and I am, when I think of you!"
+              </p>
+            </div>
+          </div>
+
+          <!-- Rose 3 -->
+          <div class="garden-item" id="rose-item-3" data-index="3">
+            <div class="rose-interactive" role="button" tabindex="0" aria-label="Third Rose: The Unwavering Promise">
+              <div class="bloom-aura"></div>
+              <svg class="blooming-rose-svg" viewBox="0 0 140 160">
+                <path class="garden-stem" d="M70,110 Q68,135 70,158" stroke="#7A936C" stroke-width="4" stroke-linecap="round" fill="none"/>
+                <path class="garden-leaf" d="M69,128 Q50,121 44,131 Q58,138 70,133" fill="#8FA683"/>
+                <g class="rose-petals-group">
+                  <path class="bloom-petal outer outer-l" d="M70,105 C42,105 28,75 42,50 C58,68 66,90 70,105 Z" fill="#E8B923"/>
+                  <path class="bloom-petal outer outer-r" d="M70,105 C98,105 112,75 98,50 C82,68 74,90 70,105 Z" fill="#E8B923"/>
+                  <path class="bloom-petal mid mid-l" d="M70,102 C50,100 42,75 54,55 C65,70 70,90 70,102 Z" fill="#F5D061"/>
+                  <path class="bloom-petal mid mid-r" d="M70,102 C90,100 98,75 86,55 C75,70 70,90 70,102 Z" fill="#F8DC7B"/>
+                  <path class="bloom-petal center" d="M65,58 C68,48 72,48 75,58 C78,75 70,96 65,58 Z" fill="#FFF1A8"/>
+                </g>
+              </svg>
+              <div class="rose-status-badge">
+                <span class="unbloomed-text">Tap to Bloom</span>
+                <span class="bloomed-text">Bloomed ✨</span>
+              </div>
+            </div>
+            
+            <div class="thought-card" id="thought-3">
+              <div class="thought-tag">The Unwavering Promise</div>
+              <p class="thought-text" id="quote-rose-3">
+                "I believe that relationships aren't about never making mistakes. They're about never giving up. No matter how tough things get, I am never walking away from us. I will always fight for you, and I will always come back to you."
+              </p>
+            </div>
+          </div>
+
+        </div>
+
+        <div class="step-actions">
+          <button class="primary-btn locked" id="btn-to-letter" disabled>
+            <span>One More Thing...</span>
+            <span class="btn-icon">💌</span>
+          </button>
+        </div>
+      </div>
+    </section>
+
+    <!-- STEP 3: The Wax-Sealed Letter (The Personal Heart) -->
+    <section class="card" id="card-step-3">
+      <div class="card-glass wide">
+        <div class="step-indicator">Step 2 of 3</div>
+        <h2 class="section-title">From My Heart to Yours</h2>
+
+        <!-- Animated Envelope -->
+        <div class="envelope-scene" id="envelope-scene">
+          <div class="envelope-wrapper" id="envelope-wrapper">
+            
+            <!-- Handwritten Dedication in the envelope white space -->
+            <div class="envelope-dedication" id="envelope-dedication">To my Sleepy Owl</div>
+
+            <!-- Envelope Back Flap -->
+            <div class="envelope-back"></div>
+            
+            <!-- Letter Sheet Sliding Out -->
+            <div class="letter-sheet" id="letter-sheet">
+              <div class="letter-header">
+                <span class="letter-date" id="letter-date-display">Today</span>
+                <span class="letter-heart">💛</span>
+              </div>
+              <div class="letter-body">
+                <p class="letter-salutation" id="letter-salutation">To my Sleepy Owl,</p>
+                <div class="letter-content" id="letter-text">
+                  <!-- Typewriter / Fade Content injected here -->
+                </div>
+                <p class="letter-signature" id="letter-signature">
+                  Forever by your side,<br>
+                  <span class="signature-name" id="signature-name">Mr. Interest</span>
+                </p>
+              </div>
+            </div>
+
+            <!-- Envelope Pocket & Front Flaps -->
+            <div class="envelope-front"></div>
+            <div class="envelope-top-flap" id="envelope-flap"></div>
+            
+            <!-- Wax Seal Button -->
+            <div class="wax-seal" id="wax-seal-btn" role="button" tabindex="0" title="Tap to open letter">
+              <div class="seal-inner">
+                <svg viewBox="0 0 40 40" class="seal-rose-icon">
+                  <path d="M20,10 C14,10 12,17 14,23 C16,27 20,29 20,33 C20,29 24,27 26,23 C28,17 26,10 20,10 Z" fill="#D4AF37"/>
+                  <circle cx="20" cy="18" r="4" fill="#996515"/>
+                </svg>
+              </div>
+              <span class="seal-prompt">Tap Seal</span>
+            </div>
+
+          </div>
+        </div>
+
+        <div class="step-actions letter-actions" id="letter-actions" style="display: none;">
+          <button class="primary-btn" id="btn-to-slider">
+            <span>Continue</span>
+            <span class="btn-arrow">→</span>
+          </button>
+        </div>
+      </div>
+    </section>
+
+    <!-- STEP 4: The Interactive "Distance to Close" Slider & Resolution -->
+    <section class="card" id="card-step-4">
+      <div class="card-glass">
+        <div class="step-indicator">Step 3 of 3</div>
+        <h2 class="section-title">Where We Stand</h2>
+        <p class="slider-prompt-title">How close are we to putting this behind us?</p>
+        
+        <!-- Interactive Slider Box -->
+        <div class="slider-box">
+          
+          <div class="slider-track-container">
+            <input type="range" min="0" max="100" value="50" class="forgiveness-slider" id="closure-slider" aria-label="Distance to Close slider">
+            <div class="slider-fill" id="slider-fill"></div>
+          </div>
+
+          <div class="slider-markers">
+            <span class="marker marker-left active">I still need time to heal</span>
+            <span class="marker marker-center active">Listening, slowly</span>
+            <span class="marker marker-right">I forgive you</span>
+          </div>
+
+          <!-- Dynamic Empathetic Feedback Card -->
+          <div class="adaptive-response-box" id="adaptive-response">
+            <div class="response-icon" id="response-icon">🕊️</div>
+            <p class="response-message" id="response-message">
+              "Take all the time you need. I'm right here whenever you're ready, and I'm not going anywhere."
+            </p>
+            <div class="comfort-badge" id="comfort-badge">No rush. Your feelings are always valid.</div>
+          </div>
+
+        </div>
+
+        <!-- Call to Action: WhatsApp / Direct Text -->
+        <div class="closure-actions">
+          <a href="#" class="primary-btn talk-btn" id="whatsapp-btn" target="_blank" rel="noopener noreferrer">
+            <svg class="wa-icon" viewBox="0 0 24 24" fill="currentColor">
+              <path d="M12.04 2C6.58 2 2.13 6.45 2.13 11.91C2.13 13.66 2.59 15.36 3.45 16.86L2.05 22L7.3 20.62C8.75 21.41 10.38 21.83 12.04 21.83C17.5 21.83 21.95 17.38 21.95 11.92C21.95 9.27 20.92 6.78 19.05 4.91C17.18 3.03 14.69 2 12.04 2M12.05 3.67C14.25 3.67 16.31 4.53 17.87 6.09C19.42 7.65 20.28 9.72 20.28 11.92C20.28 16.46 16.58 20.15 12.04 20.15C10.56 20.15 9.11 19.76 7.85 19L7.55 18.83L4.43 19.65L5.26 16.61L5.06 16.29C4.24 14.99 3.8 13.47 3.8 11.91C3.81 7.37 7.5 3.67 12.05 3.67M9.06 7.42C8.91 7.42 8.67 7.48 8.46 7.71C8.25 7.94 7.67 8.48 7.67 9.58C7.67 10.68 8.47 11.75 8.58 11.9C8.7 12.05 10.13 14.34 12.38 15.23C14.25 15.97 14.63 15.82 15.05 15.78C15.46 15.74 16.4 15.22 16.59 14.69C16.78 14.15 16.78 13.7 16.72 13.6C16.66 13.5 16.51 13.44 16.28 13.33C16.05 13.22 14.93 12.67 14.72 12.6C14.51 12.52 14.36 12.48 14.21 12.71C14.06 12.94 13.63 13.45 13.5 13.6C13.37 13.75 13.24 13.77 13.01 13.66C12.78 13.55 12.04 13.31 11.16 12.52C10.47 11.91 10.01 11.16 9.88 10.93C9.75 10.7 9.87 10.58 9.98 10.46C10.09 10.36 10.22 10.18 10.34 10.04C10.46 9.9 10.5 9.79 10.58 9.64C10.66 9.49 10.62 9.35 10.56 9.24C10.5 9.13 10.05 8.02 9.86 7.57C9.68 7.13 9.49 7.19 9.35 7.18C9.22 7.18 9.06 7.42 9.06 7.42Z"/>
+            </svg>
+            <span id="talk-btn-text">Send a text: "I'm ready to talk" 💛</span>
+          </a>
+
+          <button class="ghost-btn" id="restart-tour-btn">
+            <span>Replay Our Journey</span>
+            <span class="btn-sparkle">✨</span>
+          </button>
+        </div>
+
+      </div>
+    </section>
+
+  </main>
+
+  <!-- Sparkle Particle Container -->
+  <div id="sparkle-container"></div>
+
+  <script src="script.js"></script>
+</body>
+</html>
